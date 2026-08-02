@@ -1,5 +1,8 @@
+@file:OptIn(ExperimentalSerializationApi::class)
+
 package com.mockpulse.studio.core.util
 
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -7,6 +10,7 @@ import kotlinx.serialization.json.buildJsonObject
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 private val CLOCK = DateTimeFormatter.ofPattern("HH:mm:ss.SSS")
 
@@ -24,12 +28,13 @@ fun formatTimestamp(iso: String): String {
 fun formatBytes(bytes: Long): String {
     if (bytes < 1024) return "$bytes B"
     val kb = bytes / 1024.0
-    if (kb < 1024) return "%.1f KB".format(kb)
-    return "%.1f MB".format(kb / 1024.0)
+    if (kb < 1024) return String.format(Locale.ROOT, "%.1f KB", kb)
+    return String.format(Locale.ROOT, "%.1f MB", kb / 1024.0)
 }
 
 /** Formats an elapsed-millis value. */
-fun formatLatency(ms: Long): String = if (ms < 1000) "$ms ms" else "%.2f s".format(ms / 1000.0)
+fun formatLatency(ms: Long): String =
+    if (ms < 1000) "$ms ms" else String.format(Locale.ROOT, "%.2f s", ms / 1000.0)
 
 /**
  * Pretty-prints JSON text with 2-space indentation using kotlinx.serialization.
