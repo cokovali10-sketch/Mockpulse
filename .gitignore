@@ -24,3 +24,6 @@ Thumbs.db
 *.log
 logs/
 out/
+# Build artifacts
+*.jar
+*.zip
