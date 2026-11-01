@@ -1,5 +1,11 @@
 <div align="center">
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,50:38bdf8,100:a78bfa&height=160&section=header&text=MockPulse&fontSize=48&fontColor=ffffff&fontAlignY=38&animation=fadeIn" alt="header" />
+
+</div>
+
+<div align="center">
+
 # MockPulse Studio
 
 **Real-time desktop control plane for the [MockPulse](https://github.com/cokovali10-sketch/Mockpulse) mock API server**
